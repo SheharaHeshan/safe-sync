@@ -1,0 +1,1292 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root variables */
+:root {
+  --primary-bg: #1a1a1a;
+  --secondary-bg: #15171c;
+  --sidebar-bg: #1e1e2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #4CAF50;
+  --danger-color: #ff4444;
+  --border-color: #2d2d3d;
+  --hover-bg: #2d2d3d;
+  --active-bg: #2196f3;
+  
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  
+  --transition-speed: 0.3s;
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 72px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+}
+
+/* App container */
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--text-primary);
+  height: 100vh;
+  transition: width var(--transition-speed) ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.expanded {
+  width: var(--sidebar-width);
+}
+
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-header {
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expand-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  font-size: 1.2rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.expand-btn:hover {
+  background-color: var(--hover-bg);
+}
+
+.search-container {
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar-search {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+.nav-links {
+  flex: 1;
+  padding: var(--spacing-md) 0;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md);
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+  border-radius: var(--border-radius-sm);
+  margin: var(--spacing-xs) var(--spacing-sm);
+  width: calc(100% - var(--spacing-md));
+}
+
+.nav-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.nav-item.active {
+  background-color: var(--active-bg);
+}
+
+.nav-icon {
+  margin-right: var(--spacing-md);
+  font-size: 1.2rem;
+}
+
+.nav-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Plot controls styles */
+.plot-controls {
+  margin: var(--spacing-sm) 0;
+}
+
+.plot-submenu {
+  background-color: var(--hover-bg);
+  margin: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-xs);
+}
+
+.submenu-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.submenu-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.submenu-item.active {
+  background-color: var(--active-bg);
+}
+
+.plot-icon {
+  margin-right: var(--spacing-sm);
+}
+
+.arrow {
+  margin-left: auto;
+  font-size: 0.8rem;
+}
+
+/* User profile styles */
+.user-profile {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+}
+
+.profile-icon {
+  font-size: 1.5rem;
+  margin-right: var(--spacing-md);
+  background-color: var(--hover-bg);
+  padding: var(--spacing-sm);
+  border-radius: 50%;
+}
+
+.profile-info {
+  overflow: hidden;
+}
+
+.profile-name {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Map container styles */
+.map-container {
+  flex: 1;
+  position: relative;
+  height: 100vh;
+  z-index: 1;
+  background-color: white;
+}
+
+/* Map controls */
+.map-controls {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.map-search {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  color: #333;
+  min-width: 300px;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-button {
+  padding: 8px 16px;
+  background: #0078A8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.search-button:hover {
+  background: #005d85;
+}
+
+.search-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.search-icon {
+  font-size: 16px;
+}
+
+/* Plotting controls */
+.plotting-controls {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.control-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-button:hover {
+  background-color: #e0e0e0;
+}
+
+.control-button.active {
+  background-color: #2962ff;
+  color: white;
+}
+
+/* Plot menu */
+.plot-menu {
+  position: absolute;
+  top: 8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.plot-menu h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.plot-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.plot-option:hover {
+  background-color: #e0e0e0;
+}
+
+.plot-option.active {
+  background-color: #2962ff;
+  color: white;
+}
+
+.plot-icon {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+}
+
+/* Plot instructions */
+.plot-instructions {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* Incident popup styles */
+.incident-popup {
+  min-width: 200px;
+}
+
+.incident-popup h3 {
+  margin: 0 0 0.75rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.incident-popup select,
+.incident-popup input,
+.incident-popup textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.incident-popup textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.incident-popup button {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.incident-popup button:hover {
+  background-color: #c82333;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .map-controls {
+    width: calc(100% - 2rem);
+    top: 1rem;
+  }
+
+  .map-search {
+    padding: 0.4rem;
+  }
+
+  .search-input {
+    min-width: unset;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .search-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .plotting-controls {
+    width: calc(100% - 2rem);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .plot-menu {
+    width: calc(100% - 2rem);
+    top: auto;
+    bottom: 1rem;
+  }
+
+  .plot-instructions {
+    bottom: 5rem;
+    width: calc(100% - 2rem);
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* Leaflet specific styles */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  padding: 0;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  padding: 1rem;
+}
+
+.leaflet-popup-tip-container {
+  margin-top: -1px;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-zoom a {
+  border: none !important;
+  background-color: white !important;
+  color: #333 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #f0f0f0 !important;
+}
+
+/* Custom marker styles for dark theme */
+.leaflet-marker-icon {
+  filter: brightness(1.2);
+}
+
+/* Custom popup styles for dark theme */
+.leaflet-popup-content-wrapper {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.leaflet-popup-tip {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure attribution is visible */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: #aaa !important;
+}
+
+.leaflet-control-attribution a {
+  color: #fff !important;
+}
+
+/* Zoom controls */
+.leaflet-control-zoom {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 1px solid #444 !important;
+}
+
+.leaflet-control-zoom a {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: #444 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #2c3e50 !important;
+} 
+
+/* Map tile loading optimizations */
+.map-tiles {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Loading indicator */
+.map-loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 4px;
+  z-index: 1000;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Optimize tile loading */
+.leaflet-tile {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Fade in tiles smoothly */
+.leaflet-fade-anim .leaflet-tile {
+  will-change: opacity;
+  transition: opacity 0.2s linear;
+}
+
+/* Optimize markers */
+.leaflet-marker-icon {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Default map background */
+.leaflet-container {
+  background: #f2f2f2 !important;
+}
+
+/* Popup styles */
+.leaflet-popup-content-wrapper {
+  background: white;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+
+/* Attribution */
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #333 !important;
+}
+
+.leaflet-control-attribution a {
+  color: #0078A8 !important;
+}
+
+/* Zoom controls */
+.leaflet-control-zoom {
+  background: white !important;
+  border: 1px solid #ccc !important;
+}
+
+.leaflet-control-zoom a {
+  color: #333 !important;
+  background: white !important;
+  border-color: #ccc !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #f4f4f4 !important;
+} 
+
+/* Plot Dialog */
+.plot-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.plot-dialog {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.plot-dialog h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0078A8;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 120, 168, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-button,
+.submit-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.cancel-button {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background: #e0e0e0;
+}
+
+.submit-button {
+  background: #0078A8;
+  color: white;
+}
+
+.submit-button:hover {
+  background: #005d85;
+}
+
+/* Circle colors based on severity */
+.circle-minor {
+  stroke: #ffd700;
+  fill: #ffd700;
+  fill-opacity: 0.3;
+}
+
+.circle-moderate {
+  stroke: #ffa500;
+  fill: #ffa500;
+  fill-opacity: 0.3;
+}
+
+.circle-severe {
+  stroke: #ff4500;
+  fill: #ff4500;
+  fill-opacity: 0.3;
+}
+
+.circle-critical {
+  stroke: #ff0000;
+  fill: #ff0000;
+  fill-opacity: 0.3;
+} 
+
+/* Incident Tooltip Styles */
+.incident-tooltip {
+  background: rgba(33, 33, 33, 0.95) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  backdrop-filter: blur(4px);
+}
+
+/* Update Status Indicator styles */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+.status-dot {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.status-dot.active {
+  color: #4CAF50;
+  text-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+.status-dot.inactive {
+  color: #f44336;
+  text-shadow: 0 0 4px rgba(244, 67, 54, 0.5);
+}
+
+.status-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip Content Styles */
+.tooltip-content {
+  min-width: 280px;
+  padding: 20px;
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.incident-name {
+  font-size: 18px;
+  margin: 0;
+  color: white;
+  font-weight: bold;
+}
+
+.tooltip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px;
+}
+
+.tooltip-details > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+/* Override Leaflet's default tooltip arrow */
+.incident-tooltip.leaflet-tooltip-top:before {
+  border-top-color: rgba(33, 33, 33, 0.95) !important;
+}
+
+.incident-tooltip.leaflet-tooltip-bottom:before {
+  border-bottom-color: rgba(33, 33, 33, 0.95) !important;
+}
+
+.incident-tooltip.leaflet-tooltip-left:before {
+  border-left-color: rgba(33, 33, 33, 0.95) !important;
+}
+
+.incident-tooltip.leaflet-tooltip-right:before {
+  border-right-color: rgba(33, 33, 33, 0.95) !important;
+} 
+
+/* Configuration Dialog */
+.config-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.config-dialog {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.config-dialog h2 {
+  margin: 0 0 24px 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.config-dialog .form-group {
+  margin-bottom: 20px;
+}
+
+.config-dialog label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.config-dialog input,
+.config-dialog select,
+.config-dialog textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.config-dialog input:focus,
+.config-dialog select:focus,
+.config-dialog textarea:focus {
+  border-color: #0078A8;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 120, 168, 0.1);
+}
+
+.config-dialog textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.config-dialog .dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.config-dialog .dialog-buttons > div {
+  display: flex;
+  gap: 12px;
+}
+
+.config-dialog .cancel-button,
+.config-dialog .submit-button,
+.config-dialog .delete-button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.config-dialog .cancel-button {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.config-dialog .cancel-button:hover {
+  background: #e0e0e0;
+}
+
+.config-dialog .submit-button {
+  background: #0078A8;
+  color: white;
+}
+
+.config-dialog .submit-button:hover {
+  background: #006491;
+}
+
+.config-dialog .delete-button {
+  background: #fff;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.config-dialog .delete-button:hover {
+  background: #dc3545;
+  color: white;
+} 
+
+/* Make sure Leaflet's tooltip container is large enough */
+.leaflet-tooltip {
+  padding: 0 !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Restore other styles */
+.detail-icon {
+  font-size: 16px;
+}
+
+.detail-label {
+  color: white;
+  font-size: 14px;
+} 
+
+/* Pulse Animation Styles */
+@keyframes pulse-1 {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-2 {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-3 {
+  0% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Apply animations to pulse circles */
+.pulse-circle-1 {
+  animation: pulse-1 2s ease-out infinite;
+}
+
+.pulse-circle-2 {
+  animation: pulse-2 2s ease-out infinite;
+  animation-delay: 0.6s;
+}
+
+.pulse-circle-3 {
+  animation: pulse-3 2s ease-out infinite;
+  animation-delay: 1.2s;
+}
+
+/* Make sure the circles use transform-origin center */
+.leaflet-zoom-animated {
+  transform-origin: center center !important;
+}
+
+/* --- ManagePage Modern Layout (topbar size update) --- */
+.manage-topbar {
+  display: flex;
+  align-items: center;
+  background: #dadada;
+  padding: 0 48px 0 24px;
+  height: 96px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.manage-profiles {
+  display: flex;
+  gap: 36px;
+}
+
+.manage-profile-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #8b3c3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  cursor: pointer;
+  border: none;
+  transition: box-shadow 0.2s, background 0.2s;
+  font-size: 2.2rem;
+  color: #fff;
+}
+.manage-profile-btn.large {
+  width: 80px;
+  height: 80px;
+  font-size: 2.8rem;
+}
+.manage-profile-btn.add-btn {
+  background: #bfa5a5;
+  color: #8b3c3c;
+  font-weight: bold;
+}
+.manage-profile-btn:hover {
+  box-shadow: 0 0 0 6px #bfa5a5;
+  background: #a05a5a;
+}
+.profile-icon {
+  font-size: 2.8rem;
+}
+
+.manage-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.manage-sidebar {
+  width: 500px;
+  background: #a39c9c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  gap: 32px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+}
+.manage-sidebar.wide {
+  width: 250px;
+}
+.manage-sidebar-btn {
+  background: #fff;
+  border: none;
+  color: #8b3c3c;
+  font-size: 1.5rem;
+  margin-bottom: 13px;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 18px 12px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: background 0.2s, color 0.2s;
+}
+.manage-sidebar-btn.sidebar-action {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  background: #f7f8fa;
+}
+.manage-sidebar-btn.sidebar-action:hover, .manage-sidebar-btn.sidebar-action:focus {
+  background: #e0e0e0;
+  color: #8b3c3c;
+}
+.sidebar-btn-icon {
+  font-size: 1.7rem;
+}
+.sidebar-btn-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.manage-main {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #222;
+  font-weight: 300;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Messenger Box Styles */
+.messenger-box, .report-box {
+  width: 1700px;
+  height: 880px;
+  max-width: 98vw;
+  max-height: 90vh;
+  min-width: 320px;
+  min-height: 200px;
+  margin: auto;
+  background: #f7f8fa;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 32px 36px;
+}
+
+.messenger-header, .report-box h3 {
+  padding-top: 0;
+  padding-bottom: 24px;
+}
+
+@media (max-width: 1800px) {
+  .messenger-box, .report-box {
+    width: 98vw;
+    height: 90vh;
+    min-width: 0;
+    min-height: 0;
+  }
+}
+@media (max-width: 900px) {
+  .messenger-box, .report-box {
+    width: 100vw;
+    height: 100vh;
+    padding: 12px 4px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+.messenger-messages {
+  flex: 1;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+.message {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+.message.left {
+  flex-direction: row;
+}
+.message.right {
+  flex-direction: row-reverse;
+}
+.avatar {
+  font-size: 2rem;
+  background: #dadada;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bubble {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 28px;
+  font-size: 1.3rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  max-width: 400px;
+}
+.message.right .bubble {
+  background: #e0e0e0;
+}
+.messenger-input {
+  display: flex;
+  border-top: 1px solid #e0e0e0;
+  padding: 18px 32px;
+  background: #fafbfc;
+}
+.messenger-input input {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 1.2rem;
+  background: #fff;
+  margin-right: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+.messenger-input input:focus {
+  outline: none;
+  background: #f0f0f0;
+}
+.messenger-input button {
+  padding: 14px 28px;
+  font-size: 1.2rem;
+}
+
+.report-box h3 {
+  margin-bottom: 24px;
+  color: #8b3c3c;
+  font-size: 1.7rem;
+} 
